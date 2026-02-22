@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const titles = ["game developer", "software developer"];
+  const titles = ["Software Developer", "Game Developer"];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
   // Rotate titles every 1 second
