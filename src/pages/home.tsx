@@ -5,37 +5,91 @@ export default function Home() {
   const titles = ["Software Developer", "Game Developer"];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
-  // Rotate titles every 1 second
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
     }, 1000);
 
-    return () => clearInterval(interval); // cleanup
+    return () => clearInterval(interval);
   }, []);
 
+  const portfolios = [
+    "Full Stack Web Development",
+    "Software Development",
+    "Game Development",
+  ];
+
+  const languages = ["C++", "Python", "TypeScript", "JavaScript"];
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black">
-      {/* Main title */}
-      <h1 className="text-6xl font-extrabold text-blue-500 drop-shadow-[0_0_10px_rgb(0,191,255)]">
-        Daeldevs
-      </h1>
+    <div className="min-h-screen bg-black text-white flex flex-col justify-center items-center relative overflow-hidden">
+      
+      {/* Center Content */}
+      <div className="text-center z-10">
+        <h1 className="text-6xl font-extrabold text-cyan-400 drop-shadow-[0_0_15px_rgb(0,255,255)]">
+          Daeldevs
+        </h1>
 
-      {/* Rotating subtitle */}
-      <p className="text-2xl font-semibold text-green-500 drop-shadow-[0_0_8px_rgb(0,255,0)] mt-2 transition-all duration-500">
-        {titles[currentTitleIndex]}
-      </p>
-
-      {/* Optional card */}
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm text-center mt-10">
-        <h2 className="text-2xl font-bold text-gray-800">Tailwind Card</h2>
-        <p className="text-gray-600 mt-3">
-          This is a simple card layout built with Tailwind CSS.
+        <p className="text-2xl font-semibold text-fuchsia-500 drop-shadow-[0_0_10px_rgb(255,0,255)] mt-2 transition-all duration-500">
+          {titles[currentTitleIndex]}
         </p>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-          Learn More
-        </button>
       </div>
+
+      {/* Bottom Section */}
+      <div className="w-full flex justify-between mt-20 px-20 z-10">
+        
+        {/* LEFT SIDE - Portfolios */}
+        <div>
+          <h2 className="text-xl mb-4 text-cyan-400 tracking-widest uppercase">
+            Portfolios
+          </h2>
+
+          <div className="flex flex-col gap-4">
+            {portfolios.map((item, index) => (
+              <Link
+                key={index}
+                to="/"
+                className="group relative px-6 py-3 border border-cyan-400 
+                           text-cyan-400 font-semibold uppercase tracking-wider
+                           transition-all duration-300
+                           hover:bg-cyan-400 hover:text-black
+                           hover:shadow-[0_0_20px_rgb(0,255,255)]
+                           before:absolute before:inset-0 before:border before:border-cyan-400
+                           before:translate-x-1 before:translate-y-1
+                           before:-z-10 before:opacity-30
+                           hover:before:translate-x-0 hover:before:translate-y-0"
+              >
+                {item}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT SIDE - Languages */}
+        <div className="text-right">
+          <h2 className="text-xl mb-4 text-fuchsia-500 tracking-widest uppercase">
+            Languages
+          </h2>
+
+          <div className="flex flex-col gap-3">
+            {languages.map((lang, index) => (
+              <div
+                key={index}
+                className="text-lg text-gray-300 hover:text-fuchsia-400 
+                           transition duration-300"
+              >
+                {lang}
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Optional subtle background glow */}
+      <div className="absolute w-[500px] h-[500px] bg-cyan-500/10 blur-[120px] rounded-full top-20 left-10"></div>
+      <div className="absolute w-[500px] h-[500px] bg-fuchsia-500/10 blur-[120px] rounded-full bottom-20 right-10"></div>
+
     </div>
   );
 }
