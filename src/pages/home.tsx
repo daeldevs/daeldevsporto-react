@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const titles = ["Software Developer", "Game Developer"];
+  const titles = ["Software Engineer", "AI/ML Engineer", "Game Developer"];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
   useEffect(() => {
@@ -15,7 +15,8 @@ export default function Home() {
 
   const portfolios = [
     "Full Stack Web Development",
-    "Software Development",
+    "Software Engineering",
+    "AI/ML Engineering",
     "Game Development",
   ];
 
